@@ -14,7 +14,7 @@ See:
 
 The naive RAG notebook is a demo that uses indexed chunks on the Wikipedia article for "Abraham Lincoln." After finishing the indexing notebook, I will update the RAG notebook to use all of Wikipedia.
 
-I have been able to generate embeddings for all of Wikipedia, build and search an embedding index, as well as run a naive RAG on test data. I am working on training and building the index successfully at the moment so I can run naive RAG on the full Wikipedia.
+I have been able to generate embeddings for all of Wikipedia, build and search an embedding index, as well as run a naive RAG on test data. I am working on storing and mapping the chunks to indices so I can run naive RAG on the full Wikipedia.
 
 ## Models
 * `Mistral 7B-instruct v0.3` in NF4 quantization for the frozen LLM.
