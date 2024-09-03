@@ -6,15 +6,16 @@ This repo implements RAG from (realistic) first principles. That is, instead of 
 
 The direction I have chosen to explore is to see whether I can embed, index, and search Wikipedia on my desktop machine with 64GB RAM and an RTX 4090 (24GB GPU RAM). So, the focus has been on scaling up embedding, indexing, and retrieval.
 
+I've successfully gotten working a naive RAG on all of Wikipedia with low latency retrieval, building the embeddings myself.
+
 ## Progress
 See:
 * `embed_wikipedia_chunks.ipynb` for how I chunk and embed Wikipedia.
+* `subsample_embeddings.py` for sampling 10% of the embeddings without running out of memory
 * `index_wikipedia_chunks.ipynb` for how I construct a FAISS index for retrieval.
 * `naive_rag_inference.ipynb` for an implementation of naive RAG.
 
-The naive RAG notebook is a demo that uses indexed chunks on the Wikipedia article for "Abraham Lincoln." After finishing the indexing notebook, I will update the RAG notebook to use all of Wikipedia.
-
-I have been able to generate embeddings for all of Wikipedia, build and search an embedding index, as well as run a naive RAG on test data. I am working on storing and mapping the chunks to indices so I can run naive RAG on the full Wikipedia.
+The naive RAG notebook is a demo that uses the full index on Wikipedia to answer questions. The output is compared to a plain instruct LLM without RAG. You can see some interesting examples in the notebook. I also examined whether the retrieved chunks were relevant and discovered the importance of setting a high `K` and `nprobes`.
 
 ## Models
 * `Mistral 7B-instruct v0.3` in NF4 quantization for the frozen LLM.
@@ -22,9 +23,8 @@ I have been able to generate embeddings for all of Wikipedia, build and search a
 
 ## TODO
 Currently I'm working on:
-* Scalably mapping from FAISS index to chunk contents.
-* Testing naive RAG with the full Wikipedia search
-* A few bells-and-whistles like Step-Back Prompting.
+* Evaluation. I think this is the most important next step!
+* A few bells-and-whistles like HyDE, Step-Back Prompting, etc.
 * A Gradio demo to enter queries and compare methods.
 
 A challenge has been running out of CPU memory while manipulating the NumPy arrays for the embeddings, which results in the Python process being killed.
