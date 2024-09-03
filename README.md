@@ -3,6 +3,7 @@
 This repo implements RAG from (realistic) first principles. That is, instead of using a Vector DB like `Milvus` and a modular RAG library like `LangChain`, I use lower-level tools:
 * HuggingFace libraries (Transformers, SentenceTransformers, Gradio)
 * FAISS
+
 The direction I have chosen to explore is to see whether I can embed, index, and search Wikipedia on my desktop machine with 64GB RAM and an RTX 4090 (24GB GPU RAM). So, the focus has been on scaling up embedding, indexing, and retrieval.
 
 ## Progress
