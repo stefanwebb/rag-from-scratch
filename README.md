@@ -22,3 +22,7 @@ Currently I'm working on:
 * Building scalable FAISS index.
 * Scalably searching the document chunks.
 * A few bells-and-whistles like Step-Back Prompting.
+
+A challenge has been running out of CPU memory while manipulating the NumPy arrays for the embeddings, which results in the Python process being killed.
+
+My workaround is to avoid joining the embeddings into a single (or a few) matrices. Instead, I keep the embeddings in a number of smaller files, sample 10% of the data for training the index on the GPU, then add them one file at a time to the index.
