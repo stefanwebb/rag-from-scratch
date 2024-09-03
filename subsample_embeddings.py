@@ -32,7 +32,7 @@ for idx, file in enumerate(files):
     np.random.shuffle(X)
 
     # NOTE: It's important to wrap in np.array so we have a deep copy and can free memory
-    Xsub = np.array(X[:int(0.1 * X.shape[0])])
+    Xsub = np.array(X[:int(ratio * X.shape[0])])
     embeddings.append(Xsub)
     del X
     gc.collect()
