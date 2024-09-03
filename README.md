@@ -11,9 +11,10 @@ See:
 * `embed_wikipedia_chunks.ipynb` for how I chunk and embed Wikipedia.
 * `index_wikipedia_chunks.ipynb` for how I construct a FAISS index for retrieval.
 * `naive_rag_inference.ipynb` for an implementation of naive RAG.
+
 The naive RAG notebook is a demo that uses indexed chunks on the Wikipedia article for "Abraham Lincoln." After finishing the indexing notebook, I will update the RAG notebook to use all of Wikipedia.
 
-I have been able to generate embeddings for all of Wikipedia as well as run a naive RAG on test data. I am working on training and building the index successfully at the moment so I can run naive RAG on the full Wikipedia.
+I have been able to generate embeddings for all of Wikipedia, build and search an embedding index, as well as run a naive RAG on test data. I am working on training and building the index successfully at the moment so I can run naive RAG on the full Wikipedia.
 
 ## Models
 * `Mistral 7B-instruct v0.3` in NF4 quantization for the frozen LLM.
@@ -21,9 +22,10 @@ I have been able to generate embeddings for all of Wikipedia as well as run a na
 
 ## TODO
 Currently I'm working on:
-* Building scalable FAISS index.
-* Scalably searching the document chunks.
+* Scalably mapping from FAISS index to chunk contents.
+* Testing naive RAG with the full Wikipedia search
 * A few bells-and-whistles like Step-Back Prompting.
+* A Gradio demo to enter queries and compare methods.
 
 A challenge has been running out of CPU memory while manipulating the NumPy arrays for the embeddings, which results in the Python process being killed.
 
